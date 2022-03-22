@@ -58,6 +58,7 @@ class CartRepository {
                 // Cart Empty ensurement.
                 if(emptyCartCheckRepo){
                     cartList.value = arrayListOf()
+                    UserEntity.cartList = arrayListOf()
                     emptyCartCheckRepo = false
                 }
             }

@@ -50,13 +50,13 @@
                 android:id="@+id/tV_Username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:text="Name Field"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iV_User"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.448" />
+                app:layout_constraintVertical_bias="0.466" />
 
             <TextView
                 android:id="@+id/tv_food_name_toolbar"
@@ -64,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="@{foodObject.food_name}"
+                android:textSize="20sp"
                 android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView6"
@@ -100,7 +101,7 @@
             android:id="@+id/tv_food_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{Integer.toString(foodObject.food_price)}"
+            android:text='@{Integer.toString(foodObject.food_price*quantityObject) + "₺"}'
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/et_quantity_detail"

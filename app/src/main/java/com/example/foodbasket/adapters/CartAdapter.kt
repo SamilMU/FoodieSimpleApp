@@ -112,9 +112,7 @@ class CartAdapter(var mContext:Context, var cart_list:List<CartEntity>,
     fun cartUpdate(cartObject : CartEntity, quantity : String) {
         var tempQuant = Integer.parseInt(quantity)
         if (tempQuant <= 0) tempQuant = 1
-        val tempCartObject = cartObject
-        tempCartObject.yemek_siparis_adet = tempQuant
-        viewModelList.addFood2Cart(cartObject.yemek_siparis_adet!!,cartObject.yemek_fiyat!!,
+        viewModelList.addFood2CartWithoutCheck(tempQuant,cartObject.yemek_fiyat!!,
                         cartObject.yemek_resim_adi!!,cartObject.yemek_adi!!,UserEntity.user_name)
     }
 

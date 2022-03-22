@@ -47,7 +47,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bT_CartToolbar"
-                android:layout_width="96dp"
+                android:layout_width="112dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="296dp"
                 android:layout_marginTop="24dp"
@@ -55,7 +55,7 @@
                 android:background="@drawable/round_corners_cart"
                 android:gravity="center"
                 android:maxLines="2"
-                android:text='@{"Go To Cart " + "&#xA;" + " Price : "  + cartPriceObject.toString() + "₺"}'
+                android:text='@{"Sepete Git " + "&#xA;" + " Toplam : " + cartPriceObject.toString() + "₺"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.92"
                 app:layout_constraintStart_toStartOf="parent"

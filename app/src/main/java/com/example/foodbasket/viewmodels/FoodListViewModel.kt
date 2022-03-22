@@ -32,6 +32,16 @@ class FoodListViewModel : ViewModel() {
         foodRepo.addFood2Cart(food_order_quantity, food_price, food_pic_name, food_name, username)
     }
 
+    fun addFood2CartWithoutCheck(
+        food_order_quantity: Int,
+        food_price: Int,
+        food_pic_name: String,
+        food_name: String,
+        username: String
+    ) {
+        foodRepo.addFood2CartWithoutCheck(food_order_quantity, food_price, food_pic_name, food_name, username)
+    }
+
     // Simple Combine Adder function located in FoodListRepo that iterates over a list that is needed to be add.
     // To be used in FoodListFragment for quick addition duplicates.
     // Not Used Now.

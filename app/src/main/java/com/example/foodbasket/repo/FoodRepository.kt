@@ -78,6 +78,30 @@ class FoodRepository {
 
     }
 
+    // Main Addition Function
+    fun addFood2CartWithoutCheck(
+        food_order_quantity: Int,
+        food_price: Int,
+        food_pic_name: String,
+        food_name: String,
+        username: String
+    ) {
+        var food_cart_quantity = food_order_quantity
+
+        // Retrofit Post Request with reassigned quantity
+        foodServiceDao.addFood2CartWeb(food_cart_quantity, food_price, food_pic_name, food_name, username).enqueue(object : Callback<CRUDResponseEntity> {
+
+            override fun onResponse(call: Call<CRUDResponseEntity>?, response: Response<CRUDResponseEntity>) {
+                foodRepoCallExecuted = true
+                cartRepo.initCheckCartRepo = true
+                cartRepo.getCart(username)
+            }
+
+            override fun onFailure(call: Call<CRUDResponseEntity>?, t: Throwable?) {}
+        })
+
+    }
+
     // Combine Adder function that iterates over a list that is needed to be add.
     // To be used in FoodListFragment for quick addition duplicates.
     // Not Used Now.

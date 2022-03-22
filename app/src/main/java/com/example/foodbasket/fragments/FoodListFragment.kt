@@ -1,24 +1,21 @@
 package com.example.foodbasket.fragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
-import com.example.foodbasket.MainActivity
 import com.example.foodbasket.R
-import com.example.foodbasket.adapters.CartAdapter
 import com.example.foodbasket.adapters.FoodListAdapter
 import com.example.foodbasket.databinding.FoodListFragmentBinding
 import com.example.foodbasket.entities.user.UserEntity
 import com.example.foodbasket.viewmodels.CartFragmentViewModel
 import com.example.foodbasket.viewmodels.FoodListViewModel
-import com.google.android.material.snackbar.Snackbar
+
 
 class FoodListFragment : Fragment() {
 
@@ -32,19 +29,19 @@ class FoodListFragment : Fragment() {
         // Username
         binding.tVUsername.text = UserEntity.user_name
 
-
+        // Total Sum Calculation
+        var tempCartSum = 0
+        UserEntity.cartList.forEach {
+            if(it.yemek_fiyat != null && it.yemek_fiyat!!>0){
+                tempCartSum += (it.yemek_fiyat!!*it.yemek_siparis_adet!!)
+            }
+        }
+        binding.cartPriceObject = tempCartSum
 
         // LiveData and RecyclerView
         viewModel.foodList.observe(viewLifecycleOwner) {
             val foodListAdapter = FoodListAdapter(requireContext(), it, viewModel)
             binding.foodListAdapterObject = foodListAdapter
-            // Total Sum Calculation
-            var tempCartSum = 0
-            UserEntity.cartList.forEach {
-                if(it.yemek_fiyat != null && it.yemek_fiyat!!>0){
-                    tempCartSum += (it.yemek_fiyat!!*it.yemek_siparis_adet!!)
-                }
-            }
 
             // Observer of Adapter LiveData for price update
             foodListAdapter.toolbarCart.observe(viewLifecycleOwner){
@@ -53,12 +50,10 @@ class FoodListFragment : Fragment() {
                     if(it.yemek_fiyat != null && it.yemek_fiyat!!>0){
                         tempAdapterSum += (it.yemek_fiyat!!*it.yemek_siparis_adet!!)
                     }
-                }
+                    }
                 binding.cartPriceObject = tempAdapterSum
             }
             tempAdapter = foodListAdapter
-
-            binding.cartPriceObject = tempCartSum
 
         }
 
@@ -93,6 +88,8 @@ class FoodListFragment : Fragment() {
         viewModelCart = tempViewModelCart
         // Cart and Total Sum Should be "GET" from DB so it can be set in required Views.
         viewModelCart.loadCart(UserEntity.user_name)
+        Handler().postDelayed(this::onResume, 2000)
+
     }
 
     override fun onResume() {

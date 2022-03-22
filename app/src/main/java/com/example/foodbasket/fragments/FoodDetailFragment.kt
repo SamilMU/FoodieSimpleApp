@@ -32,8 +32,9 @@ class FoodDetailFragment : Fragment() {
 
         // Views
         binding.foodObject = foodItem
+        binding.tVUsername.text = UserEntity.user_name
 
-        var quantity = 0
+        var quantity = 1
         binding.quantityObject = quantity
 
         binding.addButtonLottie.frame = 39
