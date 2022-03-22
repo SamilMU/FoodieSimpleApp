@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.foodbasket.fragments.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/login2FoodList"
+            app:destination="@id/foodListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetailFragment"
+        android:name="com.example.foodbasket.fragments.FoodDetailFragment"
+        android:label="food_detail_fragment"
+        tools:layout="@layout/food_detail_fragment" >
+        <argument
+            android:name="foodItem"
+            app:argType="com.example.foodbasket.entities.food.FoodEntity" />
+        <action
+            android:id="@+id/detail2Cart"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodListFragment"
+        android:name="com.example.foodbasket.fragments.FoodListFragment"
+        android:label="food_list_fragment"
+        tools:layout="@layout/food_list_fragment" >
+        <action
+            android:id="@+id/foodList2Detail"
+            app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/foodList2Cart"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.foodbasket.fragments.CartFragment"
+        android:label="fragment_basket"
+        tools:layout="@layout/cart_fragment" >
+        <action
+            android:id="@+id/cart2FoodList"
+            app:destination="@id/foodListFragment" />
+        <action
+            android:id="@+id/cart2FoodDetail"
+            app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/cart2Success"
+            app:destination="@id/successFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.example.foodbasket.fragments.SuccessFragment"
+        android:label="fragment_success"
+        tools:layout="@layout/fragment_success" >
+        <action
+            android:id="@+id/success2Cart"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/success2FoodList"
+            app:destination="@id/foodListFragment" />
+    </fragment>
+</navigation>

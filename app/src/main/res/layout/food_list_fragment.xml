@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="foodListAdapterObject" type="com.example.foodbasket.adapters.FoodListAdapter" />
+        <variable name="cartListSize" type="Integer" />
+        <variable name="cartPriceObject" type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/logo6">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iV_User"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/profile_picture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/male" />
+
+            <TextView
+                android:id="@+id/tV_Username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Name Field"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iV_User"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.448" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bT_CartToolbar"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="296dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/round_corners_cart"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text='@{"Go To Cart " + "&#xA;" + " Price : "  + cartPriceObject.toString() + "₺"}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.92"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rV_FoodList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:adapter="@{foodListAdapterObject}"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/bTCompleteOrder"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            tools:layout_editor_absoluteX="-16dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bTSide1"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="256dp"
+            android:background="@color/sideButton"
+            android:text="1"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+        <!--            android:minWidth="0dp"-->
+        <!--            android:minHeight="0dp"-->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bTSide2"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="293dp"
+            android:background="@color/sideButton"
+            android:text="2"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bTSide3"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="330dp"
+            android:background="@color/sideButton"
+            android:text="3"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bTSide4"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="367dp"
+            android:background="@color/sideButton"
+            android:text="4"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bTCompleteOrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/half_circle_bottom"
+            android:text="Sepete Devam Et"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

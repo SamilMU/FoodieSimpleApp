@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="foodObject" type="com.example.foodbasket.entities.food.FoodEntity" />
+        <variable name="quantityObject" type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.FoodDetailFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="121dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/iV_User"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/logo2" />
+
+            <ImageView
+                android:id="@+id/iV_User"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/profile_picture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/male" />
+
+            <TextView
+                android:id="@+id/tV_Username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Name Field"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iV_User"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.448" />
+
+            <TextView
+                android:id="@+id/tv_food_name_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@{foodObject.food_name}"
+                android:textStyle="bold|italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                app:layout_constraintStart_toEndOf="@+id/tV_Username" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_food_detail"
+            android:layout_width="286dp"
+            android:layout_height="213dp"
+            android:src="@drawable/food"
+            app:layout_constraintBottom_toTopOf="@+id/tv_food_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/tv_food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{foodObject.food_name}"
+            android:textSize="34sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toTopOf="@+id/tv_food_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_food_detail" />
+
+        <TextView
+            android:id="@+id/tv_food_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(foodObject.food_price)}"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/et_quantity_detail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_food_name" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/sub_button_lottie"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="152dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/et_quantity_detail"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="subtract_button.json"
+            app:lottie_loop="false"
+            app:lottie_speed="1.25" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/add_button_lottie"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="152dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/et_quantity_detail"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="add_button.json"
+            app:lottie_loop="false"
+            app:lottie_speed="1.25" />
+
+        <EditText
+            android:id="@+id/et_quantity_detail"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="152dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@{Integer.toString(quantityObject)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/add_button_lottie"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/sub_button_lottie" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/add_to_cart_lottie"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_quantity_detail"
+            app:lottie_autoPlay="false"
+            app:lottie_fileName="add_to_cart_button.json"
+            app:lottie_loop="false"
+            app:lottie_speed="2.25" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bTCompleteOrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/half_circle_bottom"
+            android:text="Sepete Devam Et"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1080305111469",
+    "firebase_url": "https://foodcarttechcareer22322-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "foodcarttechcareer22322",
+    "storage_bucket": "foodcarttechcareer22322.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080305111469:android:4663a0390fd4d0250e5124",
+        "android_client_info": {
+          "package_name": "com.example.foodbasket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080305111469-avvndero7tjpjseije8nk4mc5n9550nm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUAw5pcuGD3v0sJgILpC2ImNFLpoyUo6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080305111469-avvndero7tjpjseije8nk4mc5n9550nm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
