@@ -9,7 +9,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/food_row_card"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        app:cardBackgroundColor="@android:color/transparent">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -25,11 +25,15 @@ class CartRepository {
     // Debug Needed.
     // Used for duplicate GET requests. Should be set True everywhere GET request is called.
     var initCheckCartRepo: Boolean
+    /* Response may lag behind Get requests. Clearing Live Data before response first clears Cart.
+    But response updates liveData and last items gets inserted back in. This bool is to prevent that*/
+    var emptyCartCheckRepo: Boolean
 
     init {
         cartServiceDao = ApiUtils.getFoodServiceDaoInterface()
         cartList = MutableLiveData()
         initCheckCartRepo = true
+        emptyCartCheckRepo = false
         Log.e("LogcatCRInit", "Here")
     }
 
@@ -51,6 +55,11 @@ class CartRepository {
                 // Single update ensurement.
                 initCheckCartRepo = false
 
+                // Cart Empty ensurement.
+                if(emptyCartCheckRepo){
+                    cartList.value = arrayListOf()
+                    emptyCartCheckRepo = false
+                }
             }
 
             override fun onFailure(call: Call<CartResponseEntity>?, t: Throwable?) {}
@@ -80,6 +89,7 @@ class CartRepository {
         // Clearing Singleton and LiveData.
         cartList.value = arrayListOf()
         UserEntity.cartList = arrayListOf()
+        emptyCartCheckRepo = true
     }
 
     /** To be Implemented later. User DB and Food DB can be transferred for better performance **/

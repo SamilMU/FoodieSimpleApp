@@ -11,7 +11,7 @@
         android:id="@+id/food_cart_row"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@android:color/transparent">
+        app:cardBackgroundColor="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
